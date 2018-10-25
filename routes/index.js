@@ -36,6 +36,18 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
+router.post('/signup', passport.authenticate('local-signup', {  
+  successRedirect: '/profile',
+  failureRedirect: '/signup',
+  failureFlash: true,
+}));
+
+router.post('/login', passport.authenticate('local-login', {  
+  successRedirect: '/profile',
+  failureRedirect: '/login',
+  failureFlash: true,
+}));
+
 module.exports = router;
 
 function isLoggedIn(req, res, next) {  

@@ -34,6 +34,7 @@ app.use(session({ secret: 'shhsecret' }));
 app.use(passport.initialize());  
 app.use(passport.session());  
 app.use(flash());
+require('./controllers/passport')(passport); 
 
 app.use('/', index);
 app.use('/api', indexApi);
