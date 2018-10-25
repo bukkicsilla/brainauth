@@ -1,13 +1,12 @@
-<!--<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>-->
 <% include head %>  
   <body>
     <h1><%= title %></h1>
-    <!--<p>Welcome to <%= title %></p>-->
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="text-center">
+        <h1>Authentication</h1>
+        <a href="/login" class="btn btn-default"><span class="fa fa-sign-in"></span> Login</a>
+        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Signup</a>
+    </div>
       
       <ul>
           <% parts.forEach(function(part){ %>
