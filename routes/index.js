@@ -4,11 +4,12 @@ var router = express.Router();
 var brainController = require('../controllers/brain');
 
 /* GET home page. */
-/*router.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'Parts of the Human Brain' });
-});*/
+});
 
-router.get('/', brainController.getParts);
+//router.get('/', brainController.getParts);
+router.get('/parts', brainController.getParts);
 router.get('/part/:brainpartid', brainController.getPart);
 router.get('/createpart', brainController.formCreatePart);
 router.post('/createpart', brainController.createPart);
@@ -37,13 +38,13 @@ router.get('/logout', function(req, res) {
 });
 
 router.post('/signup', passport.authenticate('local-signup', {  
-  successRedirect: '/profile',
+  successRedirect: '/parts',
   failureRedirect: '/signup',
   failureFlash: true,
 }));
 
 router.post('/login', passport.authenticate('local-login', {  
-  successRedirect: '/profile',
+  successRedirect: '/parts',
   failureRedirect: '/login',
   failureFlash: true,
 }));

@@ -7,14 +7,7 @@
         <a href="/login" class="btn btn-default"><span class="fa fa-sign-in"></span> Login</a>
         <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Signup</a>
     </div>
-      
-      <ul>
-          <% parts.forEach(function(part){ %>
-         
-          <li> <a href='/part/<%= part._id %>'><%= part.name %></a></li>
-          <% }); %>
-      </ul>
-      <a class = "change" href='/createpart'> New Brain Part </a>
+      </div>
       
   </body>
 </html>

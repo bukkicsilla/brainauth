@@ -59,8 +59,9 @@ module.exports.getParts = function(req, res){
         }
     }//else
         //rendering
-        res.render('index', {
+        res.render('parts', {
             title : 'Parts of the Human Brain',
+            user: req.user,
             parts: body,
             message: msg
          });
@@ -159,7 +160,7 @@ module.exports.createPart = function(req, res){
       requestOps,
       function(err, response, body) {
         if (response.statusCode === 201) {
-          res.redirect('/');
+          res.redirect('/parts');
         } else if (response.statusCode === 400 && body.name && body.name === "ValidationError" ) {
           res.redirect('/createpart/');
         } else {
@@ -188,7 +189,7 @@ module.exports.deletePart = function(req, res){
     request(requestOps, 
            function(err, response, body){
             if (response.statusCode === 204){
-                res.redirect('/');
+                res.redirect('/parts');
             } else  {
                 if (response.statusCode === 404){
                     title = "404, page not found";

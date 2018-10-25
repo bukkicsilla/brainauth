@@ -1,0 +1,22 @@
+<% include head %>  
+  <body>
+    <h1><%= title %></h1>
+    
+     
+       <div>
+          <% if (user.local.email != null) { %>
+            <!--<img src="https://avatars.io/gravatar/<%= user.local.email %>" class="img-circle"><br>-->
+            <strong>Email</strong> : <%= user.local.email %><br>
+          <% } %>
+           <br>
+        </div>
+      <ul>
+          <% parts.forEach(function(part){ %>
+         
+          <li> <a href='/part/<%= part._id %>'><%= part.name %></a></li>
+          <% }); %>
+      </ul>
+      <a class = "change" href='/createpart'> New Brain Part </a>
+      <% include footer %>
+  </body>
+</html>
