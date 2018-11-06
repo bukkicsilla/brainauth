@@ -1,4 +1,5 @@
 //Let less secure apps access your account
+//https://blog.heroku.com/tech_sending_email_with_gmail
 
 var async = require('async');
 var crypto = require('crypto');
@@ -39,12 +40,12 @@ module.exports.forgotPassword = function(req, res, next) {
      // var smtpTransport = nodemailer.createTransport('SMTP', {
       //var transport = nodemailer.createTransport(smtpTransport({
         console.log("login password ", process.env.GMAILPW);
-      var transport = nodemailer.createTransport({
+      var transport = nodemailer.createTransport( {
         service: 'Gmail',
         host: 'smtp.gmail.com',
         auth: {
           //xoauth2: xoauth2.createXOAuth2Generator({
-            user: 'csilla.bukki@gmail.com',
+            user: process.env.GMAILUSER,
               //user: 'Brainparts',
             //user: 'lunasaturni',
             //clientId: '795951284550-ho921dm76ifcfl82f7mgh82j97bvu778.apps.googleusercontent.com' ,
@@ -132,7 +133,7 @@ module.exports.resetPassword = function(req, res){
         service: 'Gmail',
          host: 'smtp.gmail.com',
         auth: {
-          user: 'csilla.bukki@gmail.com',
+          user: process.env.GMAILUSER,
           pass: process.env.GMAILPW
         }
       });
