@@ -1,5 +1,10 @@
 //Let less secure apps access your account
 //https://blog.heroku.com/tech_sending_email_with_gmail
+//$ export GMAILUSER=username@gmail.com
+//$ export GMAILWD=yourpassword
+//echo $GMAILUSER
+//$ heroku config:add GMAILUSER=username@gmail.com
+//$ heroku config:add GMAILPW=yourpassword
 
 var async = require('async');
 var crypto = require('crypto');
