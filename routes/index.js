@@ -28,9 +28,10 @@ router.get('/forgot', function(req, res) {
   });
 });
 
-router.post('/forgot', resetController.resetPassword);
+router.post('/forgot', resetController.forgotPassword);
 
 router.get('/reset/:token', resetController.useToken);
+router.post('/reset/:token', resetController.resetPassword);//??????
 
 router.get('/login', function(req, res, next) {  
   res.render('login', { title: 'Login', message: req.flash('loginMessage') });

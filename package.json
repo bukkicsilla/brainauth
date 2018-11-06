@@ -22,6 +22,7 @@
     "nodemailer-smtp-transport": "^2.7.4",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "password-reset": "^0.1.4",
     "request": "^2.88.0",
     "serve-favicon": "~2.4.2",
     "xoauth2": "^1.2.0"
