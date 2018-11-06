@@ -41,6 +41,7 @@ module.exports.forgotPassword = function(req, res, next) {
         console.log("login password ", process.env.GMAILPW);
       var transport = nodemailer.createTransport({
         service: 'Gmail',
+        host: 'smtp.gmail.com',
         auth: {
           //xoauth2: xoauth2.createXOAuth2Generator({
             user: 'csilla.bukki@gmail.com',
@@ -106,7 +107,7 @@ module.exports.resetPassword = function(req, res){
           req.flash('resetPassword', 'Password reset token is invalid or has expired.');
           return res.redirect('back');
         }
-        console.log("pw ", user.local.password);
+        if (req.body.password === req.body.confirm){  
         //user.local.password = req.body.password;
         user .local.password = user.generateHash(req.body.password);
         console.log("pw ! ", user.local.password);
@@ -118,12 +119,18 @@ module.exports.resetPassword = function(req, res){
             done(err, user);
           });
         });
+        }//if
+          else{
+              message = req.flash("resetPassword", "Passwords do not match!");
+              return res.redirect('back');
+          }
       });
     },
     function(user, done) {
       //var smtpTransport = nodemailer.createTransport('SMTP', {
      var transport = nodemailer.createTransport({
         service: 'Gmail',
+         host: 'smtp.gmail.com',
         auth: {
           user: 'csilla.bukki@gmail.com',
           pass: process.env.GMAILPW
