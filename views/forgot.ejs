@@ -1,6 +1,10 @@
 <% include head %>  
 
 <h1> Forgot Password </h1><br>
+      <% if (message != null) { %>
+        	<div class="alert-danger"><%= message %></div>
+        <% } %>
+
 <form action="/forgot" method="post">
     <div class="form-group">
         <label>Email</label>

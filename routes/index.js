@@ -23,11 +23,14 @@ router.post('/updatefunctionalities/:brainpartid', brainController.updateFunctio
 
 router.get('/forgot', function(req, res) {
   res.render('forgot', {
-    user: req.user
+    user: req.user,
+    message: req.flash('resetPassword')
   });
 });
 
 router.post('/forgot', resetController.resetPassword);
+
+router.get('/reset/:token', resetController.useToken);
 
 router.get('/login', function(req, res, next) {  
   res.render('login', { title: 'Login', message: req.flash('loginMessage') });
