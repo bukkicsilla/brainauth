@@ -34,10 +34,12 @@ module.exports.showPart = function(req, res){
 }
 
 module.exports.createPart = function(req, res){
+    console.log("API user ", req.body)
     Brain.create({
         name: req.body.name,
         meaning: req.body.meaning,
-        functionalities: req.body.functionalities
+        functionalities: req.body.functionalities,
+        partemail: req.body.partemail
     }, function(err, part){
         if(err){
             res.status(400);

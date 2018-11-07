@@ -7,6 +7,7 @@ var functionalitySchema = new mongoose.Schema({
 var partSchema = new mongoose.Schema({
     name: { type: String, unique: true, required: true},
     meaning: {type: String},
+    partemail: {type: String, required: true},
     functionalities: [functionalitySchema]
 });
 

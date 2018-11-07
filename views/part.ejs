@@ -2,7 +2,13 @@
   <body>
       <a href='/parts' class='changepart'> Brain Part List </a>
     <h1><%= title %></h1>
-    
+     <div>
+          <% if (user.local.email != null) { %>
+            <!--<img src="https://avatars.io/gravatar/<%= user.local.email %>" class="img-circle"><br>-->
+            <strong>Logged in by</strong> : <%= user.local.email %><br>
+          <% } %>
+           <br>
+        </div>
     <p><%= part.name %> </p>
       
       <P> It means <%= part.meaning%>.</P>

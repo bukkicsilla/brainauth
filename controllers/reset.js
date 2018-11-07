@@ -33,7 +33,8 @@ module.exports.forgotPassword = function(req, res, next) {
         }
         console.log("before getting token");
         user.local.resetPasswordToken = token;
-        user.local.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+        //user.local.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+        user.local.resetPasswordExpires = Date.now() + 300000; // 5 minutes  
         console.log("set token ", user.local.resetPasswordToken);
         user.save(function(err) {
           done(err, token, user);

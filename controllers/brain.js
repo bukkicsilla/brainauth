@@ -70,6 +70,7 @@ module.exports.getParts = function(req, res){
 }
 
 module.exports.getPart = function(req,res){
+    //console.log("get user part", req.user);
     var requestOps, path;
     path = "/api/brainparts/" + req.params.brainpartid;
     console.log("path " + path);
@@ -87,6 +88,7 @@ module.exports.getPart = function(req,res){
                 console.log('part ID ' + body._id);
                 res.render('part', {
             title: 'Part info',
+            user: req.user,
             brainpart: body,        
             part: {
                 name: body.name,
@@ -118,12 +120,12 @@ module.exports.getPart = function(req,res){
 }
 
 module.exports.formCreatePart = function(req, res){
-    
+    console.log("get user", req.user);
     res.render('createpart', {
     title: 'Create Brain Part',
     error: req.query.err
   });
-    console.log(req.query.err);
+    //console.log(req.query.err);
 }
 
 module.exports.createPart = function(req, res){
@@ -140,10 +142,13 @@ module.exports.createPart = function(req, res){
             });
         }
     }
+    console.log("user email ", req.user.local.email);
+    console.log("req body ", req.body);
     postdata = {
     name: req.body.formname,    
     meaning: req.body.formmeaning,
-    functionalities: funcdict
+    functionalities: funcdict,
+    partemail: req.user.local.email
     };
     if (postdata.meaning === ""){
         postdata.meaning = "??";
