@@ -29,8 +29,15 @@
           <% }); %>
 </ul>
       <br><br>
+      
+      <%if (user.local.email === part.partemail) { %>
       <a href='/deletepart/<%= brainpart._id %>' class="changepart"> Delete this part. </a>
       <a href='/updatemeaning/<%= brainpart._id %>' class="changepart"> Update meaning. </a>
       <a href='/updatefunctionalities/<%= brainpart._id %>' class="changepart"> Update functionalities </a>
+      <% } %>
+      <br><br><br>
+      <div>
+          <p>Created by <%= part.partemail %></p> 
+      </div>
   </body>
 </html>

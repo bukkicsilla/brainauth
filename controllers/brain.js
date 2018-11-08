@@ -93,6 +93,7 @@ module.exports.getPart = function(req,res){
             part: {
                 name: body.name,
                 meaning: body.meaning,
+                partemail: body.partemail,
                 functionalities: body.functionalities
             }
             
@@ -217,7 +218,11 @@ module.exports.deletePart = function(req, res){
 } 
 
 module.exports.formUpdateMeaning = function(req, res){
-    
+    console.log("user ", req.user);
+    console.log("created by ", req);
+    /*if (req.user.local.email === 'val@gmail.com'){
+        return res.redirect('back');
+    }*/
     var requestOps, path;
     path = "/api/brainparts/" + req.params.brainpartid;
     
