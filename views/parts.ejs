@@ -10,12 +10,24 @@
           <% } %>
            <br>
         </div>
+       
       <ul>
           <% parts.forEach(function(part){ %>
-         
+          <% if (user.local.email === part.partemail) { %>
           <li> <a href='/part/<%= part._id %>'><%= part.name %></a></li>
+          <% } %>
           <% }); %>
       </ul>
+      <hr>
+      <ul>
+          <% parts.forEach(function(part){ %>
+          <% if (user.local.email !== part.partemail) { %>
+          <li> <a href='/part/<%= part._id %>'><%= part.name %></a></li>
+          <% } %>
+          <% }); %>
+      </ul>
+      
+      
       <a class = "change" href='/createpart'> New Brain Part </a>
       <% include footer %>
   </body>
